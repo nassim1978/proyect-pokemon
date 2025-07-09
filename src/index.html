@@ -9,8 +9,160 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #1e88e5;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin: 5px 0 20px;
+    }
+
+    /* Navigation Styles */
+    .container-btn-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .btn-types {
+      padding: 10px 15px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-types:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Button Colors */
+    .btn-types-all {
+      background-color: #1e88e5;
+    }
+
+    .btn-types-normal {
+      background-color: #a8a77a;
+    }
+
+    .btn-types-fire {
+      background-color: #ee8130;
+    }
+
+    .btn-types-water {
+      background-color: #6390f0;
+    }
+
+    .btn-types-grass {
+      background-color: #7ac74c;
+    }
+
+    .btn-types-electric {
+      background-color: #f7d02c;
+    }
+
+    .btn-types-ice {
+      background-color: #96d9d6;
+    }
+
+    .btn-types-fighting {
+      background-color: #c22e28;
+    }
+
+    .btn-types-poison {
+      background-color: #a33ea1;
+    }
+
+    .btn-types-ground {
+      background-color: #e2bf65;
+    }
+
+    .btn-types-flying {
+      background-color: #a98ff3;
+    }
+
+    .btn-types-psychic {
+      background-color: #f95587;
+    }
+
+    .btn-types-bug {
+      background-color: #a6b91a;
+    }
+
+    .btn-types-rock {
+      background-color: #b6a136;
+    }
+
+    .btn-types-ghost {
+      background-color: #735797;
+    }
+
+    .btn-types-dragon {
+      background-color: #6f35fc;
+    }
+
+    .btn-types-dark {
+      background-color: #705746;
+    }
+
+    .btn-types-steel {
+      background-color: #b7b7ce;
+    }
+
+    .btn-types-fairy {
+      background-color: #d685ad;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .btn-types {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Pokémon Explorer</h1>
+    <p>Descubre y explora los primeros 151 Pokémon</p>
+  </header>
+
   <app-root></app-root>
 </body>
 </html>

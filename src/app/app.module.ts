@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
-import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+
+import { AppComponent } from './app.component';
+import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
+import { getSpanishPaginatorIntl } from './custom-paginator-intl'; // Importar la configuración personalizada
+
 @NgModule({
-  declarations: [AppComponent, PokemonListComponent, PokemonCardComponent],
+  declarations: [AppComponent, PokemonListComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     FormsModule,
-    MatCardModule,
-    MatGridListModule,
+    HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule,
+    MatPaginatorModule,
+    MatButtonModule,
   ],
-  providers: [],
+  providers: [
+    { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() }, // Configurar el proveedor
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

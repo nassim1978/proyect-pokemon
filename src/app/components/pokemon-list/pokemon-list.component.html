@@ -1,46 +1,197 @@
+<header class="container">
+  <!-- Botones para filtrar por tipo -->
+<nav class="container-btn-types">
+  <button
+    class="btn-types btn-types-all"
+    id="all"
+    (click)="filterByType('all')"
+    [class.active]="selectedType === 'all'"
+  >
+    Ver todos
+  </button>
+  <button
+    class="btn-types btn-types-normal"
+    id="normal"
+    (click)="filterByType('normal')"
+    [class.active]="selectedType === 'normal'"
+  >
+    Normal
+  </button>
+  <button
+    class="btn-types btn-types-fire"
+    id="fire"
+    (click)="filterByType('fire')"
+    [class.active]="selectedType === 'fire'"
+  >
+    Fire
+  </button>
+  <button
+    class="btn-types btn-types-water"
+    id="water"
+    (click)="filterByType('water')"
+    [class.active]="selectedType === 'water'"
+  >
+    Water
+  </button>
+  <button
+    class="btn-types btn-types-grass"
+    id="grass"
+    (click)="filterByType('grass')"
+    [class.active]="selectedType === 'grass'"
+  >
+    Grass
+  </button>
+  <button
+    class="btn-types btn-types-electric"
+    id="electric"
+    (click)="filterByType('electric')"
+    [class.active]="selectedType === 'electric'"
+  >
+    Electric
+  </button>
+  <button
+    class="btn-types btn-types-ice"
+    id="ice"
+    (click)="filterByType('ice')"
+    [class.active]="selectedType === 'ice'"
+  >
+    Ice
+  </button>
+  <button
+    class="btn-types btn-types-fighting"
+    id="fighting"
+    (click)="filterByType('fighting')"
+    [class.active]="selectedType === 'fighting'"
+  >
+    Fighting
+  </button>
+  <button
+    class="btn-types btn-types-poison"
+    id="poison"
+    (click)="filterByType('poison')"
+    [class.active]="selectedType === 'poison'"
+  >
+    Poison
+  </button>
+  <button
+    class="btn-types btn-types-ground"
+    id="ground"
+    (click)="filterByType('ground')"
+    [class.active]="selectedType === 'ground'"
+  >
+    Ground
+  </button>
+  <button
+    class="btn-types btn-types-flying"
+    id="flying"
+    (click)="filterByType('flying')"
+    [class.active]="selectedType === 'flying'"
+  >
+    Flying
+  </button>
+  <button
+    class="btn-types btn-types-psychic"
+    id="psychic"
+    (click)="filterByType('psychic')"
+    [class.active]="selectedType === 'psychic'"
+  >
+    Psychic
+  </button>
+  <button
+    class="btn-types btn-types-bug"
+    id="bug"
+    (click)="filterByType('bug')"
+    [class.active]="selectedType === 'bug'"
+  >
+    Bug
+  </button>
+  <button
+    class="btn-types btn-types-rock"
+    id="rock"
+    (click)="filterByType('rock')"
+    [class.active]="selectedType === 'rock'"
+  >
+    Rock
+  </button>
+  <button
+    class="btn-types btn-types-ghost"
+    id="ghost"
+    (click)="filterByType('ghost')"
+    [class.active]="selectedType === 'ghost'"
+  >
+    Ghost
+  </button>
+  <button
+    class="btn-types btn-types-dragon"
+    id="dragon"
+    (click)="filterByType('dragon')"
+    [class.active]="selectedType === 'dragon'"
+  >
+    Dragon
+  </button>
+  <button
+    class="btn-types btn-types-steel"
+    id="steel"
+    (click)="filterByType('steel')"
+    [class.active]="selectedType === 'steel'"
+  >
+    Steel
+  </button>
+  <button
+    class="btn-types btn-types-fairy"
+    id="fairy"
+    (click)="filterByType('fairy')"
+    [class.active]="selectedType === 'fairy'"
+  >
+    Fairy
+  </button>
+</nav>
+
+</header>
+
+<!-- Barra de búsqueda -->
 <div class="search-bar">
   <input
     type="text"
+    placeholder="Buscar Pokémon"
     [(ngModel)]="searchQuery"
     (input)="onSearch()"
-    placeholder="Buscar Pokémon"
   />
-  <button
-    mat-raised-button
-    color="primary"
-    class="next-button"
-    (click)="onSort()"
-  >
-    Ordenar
-  </button>
 </div>
 
+<!-- Lista de Pokémon -->
 <div class="pokemon-grid">
-  <app-pokemon-card
-    *ngFor="let pokemon of getPaginatedPokemon()"
-    [pokemon]="pokemon"
-    (delete)="onDelete($event)"
-  ></app-pokemon-card>
+  <div *ngFor="let pokemon of paginatedPokemon" class="pokemon-card">
+    <img [src]="pokemon.image" [alt]="pokemon.name" />
+    <h3>{{ pokemon.name }}</h3>
+    <!--  
+    <p>Tipos: {{ pokemon.types.join(', ') }}</p>    
+    -->
+    
+    <button mat-raised-button color="warn" (click)="onDelete(pokemon)">
+      Eliminar
+    </button>
+  </div>
+</div>
+<div *ngIf="filteredPokemonList.length === 0 && selectedType !== 'all'" class="empty-message">
+ ¡Opsss, eliminaste todos los Pokémon de tipo {{ selectedType }}!
+</div>
+<div *ngIf="filteredPokemonList.length === 0 && selectedType !== 'all'" class="pokemon-container1">
+  <img
+    src="assets/pokemon-touch.png"
+    alt="Pokémon tocando la pantalla"
+    class="pokemon-image"
+  />
 </div>
 
-<div class="pagination">
-  <button
-    mat-raised-button
-    color="primary"
-    class="next-button"
-    [disabled]="currentPage === 0"
-    (click)="onPageChange(currentPage - 1)"
-  >
-    Anterior
-  </button>
-  <span class="current-page">Página {{ currentPage + 1 }}</span>
-  <button
-    mat-raised-button
-    color="primary"
-    class="next-button"
-    [disabled]="(currentPage + 1) * pageSize >= filteredPokemonList.length"
-    (click)="onPageChange(currentPage + 1)"
-  >
-    Siguiente
-  </button>
-</div>
+
+
+
+<!-- Paginador de Angular Material -->
+<mat-paginator
+  [length]="filteredPokemonList.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20, 151]"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>

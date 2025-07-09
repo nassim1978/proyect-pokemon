@@ -1,115 +1,181 @@
-/* Contenedor principal */
-.pokemon-grid {
+/* Encabezado */
+.header {
+  text-align: center;
+  background-color: #1e88e5;
+  color: white;
+  padding: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.header-subtitle {
+  font-size: 1.2rem;
+  margin: 5px 0 20px;
+}
+
+/* Botones de tipos de Pokémon */
+.container-btn-types {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-  gap: 20px; /* Espaciado entre tarjetas */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
   padding: 20px;
-  background-color: #f4f4f4; /* Fondo claro */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra general */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.btn-types {
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-types:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-types.active {
+  border: 2px solid white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Colores de los botones */
+.btn-types-all {
+  background-color: #1e88e5;
+}
+
+.btn-types-normal {
+  background-color: #a8a77a;
+}
+
+.btn-types-fire {
+  background-color: #ee8130;
+}
+
+.btn-types-water {
+  background-color: #6390f0;
+}
+
+.btn-types-grass {
+  background-color: #7ac74c;
+}
+
+.btn-types-electric {
+  background-color: #f7d02c;
+}
+
+.btn-types-ice {
+  background-color: #96d9d6;
 }
 
 /* Barra de búsqueda */
-/* Contenedor de la barra de búsqueda */
 .search-bar {
-  display: flex; /* Elementos alineados horizontalmente */
-  justify-content: space-between; /* Espacio entre el input y el botón */
-  align-items: center; /* Centrar verticalmente los elementos */
-  background-color: #ffffff; /* Fondo blanco */
-  border: 2px solid #e0e0e0; /* Borde claro */
-  border-radius: 8px; /* Bordes redondeados */
-  padding: 10px 20px; /* Espaciado interno */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  margin-bottom: 20px; /* Espaciado inferior */
-}
-
-/* Input de búsqueda */
-.search-bar input {
-  flex: 1; /* Ocupa todo el espacio disponible */
-  font-size: 1rem; /* Tamaño de fuente */
-  padding: 10px; /* Espaciado interno */
-  border: none; /* Sin borde */
-  outline: none; /* Sin borde al hacer clic */
-  border-radius: 4px; /* Bordes redondeados */
-  background-color: #f9f9f9; /* Fondo claro */
-  margin-right: 10px; /* Espaciado entre el input y el botón */
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra interna */
-  max-width: 600px; /* Limitar el ancho máximo */
-}
-
-/* Input al pasar el mouse */
-.search-bar input:hover {
-  background-color: #f0f0f0; /* Fondo ligeramente más oscuro */
-}
-
-/* Input al hacer clic */
-.search-bar input:focus {
-  background-color: #ffffff; /* Fondo blanco */
-  box-shadow: 0 0 4px #4caf50; /* Sombra verde */
-}
-
-/* Botón de ordenar */
-.search-bar button {
-  font-size: 1rem; /* Tamaño de fuente */
-  padding: 10px 20px; /* Espaciado interno */
-  border-radius: 4px; /* Bordes redondeados */
-  text-transform: uppercase; /* Texto en mayúsculas */
-  font-weight: bold; /* Texto en negrita */
-  cursor: pointer; /* Cambiar el cursor al pasar el mouse */
-  transition: background-color 0.3s, transform 0.2s; /* Animación */
-}
-
-/* Botón al pasar el mouse */
-.search-bar button:hover {
-  background-color: #1976d2; /* Azul más oscuro */
-  transform: scale(1.05); /* Aumentar ligeramente el tamaño */
-}
-
-/* Botones de paginación */
-.pagination {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin: 20px 0;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+  border-color: #3f51b5;
+  box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+}
+
+/* Lista de Pokémon */
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.pokemon-card {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-image {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+.pokemon-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.pokemon-types {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Paginador */
+mat-paginator {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-.pagination button {
-  margin: 0 10px;
+.empty-message {
+   display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  font-family: 'PokemonSolid', sans-serif;
+  font-size: 70px; /* Tamaño de la fuente */
+  color: #ffcc00; /* Color amarillo similar al logotipo de Pokémon */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para resaltar el texto */
 }
-/* Botón "Ordenar" */
-.next-button {
-  background-color: #4caf50; /* Color verde coherente con el título */
-  color: #ffffff; /* Texto blanco para contraste */
-  font-size: 1rem; /* Tamaño de fuente */
-  font-weight: bold; /* Texto en negrita */
-  padding: 10px 20px; /* Espaciado interno */
-  border: none; /* Sin borde */
-  border-radius: 8px; /* Bordes redondeados */
-  cursor: pointer; /* Cambiar el cursor al pasar el mouse */
-  text-transform: uppercase; /* Texto en mayúsculas */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
-  transition: background-color 0.3s, transform 0.2s; /* Animación */
-}
-
-/* Botón al pasar el mouse */
-.next-button:hover {
-  background-color: #45a049; /* Verde más oscuro al pasar el mouse */
-  transform: scale(1.05); /* Aumentar ligeramente el tamaño */
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+.pokemon-container {
+  position: relative;
+  width: 200px; /* Ajusta el ancho según sea necesario */
+  height: 200px; /* Ajusta la altura según sea necesario */
+  margin: 0 auto; /* Centra el contenedor */
+  overflow: hidden; /* Oculta las partes de la imagen que no deben verse */
+  border: 5px solid #1e88e5; /* Borde azul similar a Pokémon */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
 }
 
-/* Botón al hacer clic */
-.next-button:active {
-  background-color: #388e3c; /* Verde más oscuro al hacer clic */
-  transform: scale(0.95); /* Reducir ligeramente el tamaño */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra más pequeña */
+.pokemon-container1 {
+  display: flex;
+  justify-content: center; /* Centra la imagen horizontalmente */
+  align-items: center; /* Centra la imagen verticalmente */
+ 
 }
 
-.current-page {
-  font-weight: bold; /* Texto en negrita */
-  font-size: 1.2rem; /* Tamaño de fuente ligeramente más grande */
-  color: #4caf50; /* Color verde para resaltar */
-  text-transform: uppercase; /* Texto en mayúsculas */
-  letter-spacing: 1px; /* Espaciado entre letras */
-  margin: 0 10px; /* Espaciado alrededor del span */
+.pokemon-image {
+  width: 300px; /* Ancho fijo de la imagen */
+  height: auto; /* Mantiene las proporciones de la imagen */
+  max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+ 
 }
+
+
