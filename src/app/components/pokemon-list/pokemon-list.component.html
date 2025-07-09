@@ -1,0 +1,46 @@
+<div class="search-bar">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (input)="onSearch()"
+    placeholder="Buscar Pokémon"
+  />
+  <button
+    mat-raised-button
+    color="primary"
+    class="next-button"
+    (click)="onSort()"
+  >
+    Ordenar
+  </button>
+</div>
+
+<div class="pokemon-grid">
+  <app-pokemon-card
+    *ngFor="let pokemon of getPaginatedPokemon()"
+    [pokemon]="pokemon"
+    (delete)="onDelete($event)"
+  ></app-pokemon-card>
+</div>
+
+<div class="pagination">
+  <button
+    mat-raised-button
+    color="primary"
+    class="next-button"
+    [disabled]="currentPage === 0"
+    (click)="onPageChange(currentPage - 1)"
+  >
+    Anterior
+  </button>
+  <span class="current-page">Página {{ currentPage + 1 }}</span>
+  <button
+    mat-raised-button
+    color="primary"
+    class="next-button"
+    [disabled]="(currentPage + 1) * pageSize >= filteredPokemonList.length"
+    (click)="onPageChange(currentPage + 1)"
+  >
+    Siguiente
+  </button>
+</div>

@@ -1,27 +1,42 @@
-# PokemonTest
+# Pokémon Interface Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.19.
+Este proyecto es una interfaz de usuario para visualizar los primeros 151 Pokémon utilizando la PokeAPI. La aplicación incluye funcionalidades como paginación, búsqueda, ordenamiento y eliminación temporal de Pokémon.
 
-## Development server
+## **Características**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Visualización de los primeros 151 Pokémon.
+- Paginación para navegar entre los Pokémon.
+- Barra de búsqueda para encontrar Pokémon por nombre.
+- Ordenamiento de Pokémon.
+- Eliminación temporal de Pokémon de la lista.
+- Interfaz moderna utilizando Angular Material.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## **Requisitos Previos**
 
-## Build
+Antes de comenzar, asegúrate de tener instaladas las siguientes herramientas:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. **Node.js**: Versión `14.15.3`.
+   - Descarga e instala Node.js desde [Node.js Official Website](https://nodejs.org/).
+2. **Angular CLI**: Versión `11.x`.
+   - Instálalo globalmente ejecutando:
+     ```bash
+     npm install -g @angular/cli@11
+     ```
+3. **Git**: Para clonar el repositorio.
+   - Descarga e instala Git desde [Git Official Website](https://git-scm.com/).
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## **Instrucciones de Instalación**
 
-## Running end-to-end tests
+Sigue los pasos a continuación para instalar y ejecutar el proyecto en tu máquina local.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### **1. Clonar el Repositorio**
 
-## Further help
+Clona este repositorio en tu máquina local utilizando Git:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+git clone git@github.com:nassim1978/proyect-pokemon.git
+```
