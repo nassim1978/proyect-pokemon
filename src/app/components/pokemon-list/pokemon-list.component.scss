@@ -177,5 +177,13 @@ mat-paginator {
   max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
  
 }
+.empty-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #d32f2f; /* Rojo para resaltar el mensaje */
+  margin-top: 20px;
+  font-weight: bold;
+}
+
 
 

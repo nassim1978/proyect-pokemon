@@ -154,10 +154,12 @@
   <input
     type="text"
     placeholder="Buscar Pokémon"
-    [(ngModel)]="searchQuery"
-    (input)="onSearch()"
+    [value]="searchQuery"
+    (input)="onSearch($event)"
   />
 </div>
+
+
 
 <!-- Lista de Pokémon -->
 <div class="pokemon-grid">
@@ -173,9 +175,30 @@
     </button>
   </div>
 </div>
+<!--
 <div *ngIf="filteredPokemonList.length === 0 && selectedType !== 'all'" class="empty-message">
  ¡Opsss, eliminaste todos los Pokémon de tipo {{ selectedType }}!
 </div>
+-->
+
+
+
+<div *ngIf="filteredPokemonList.length === 0" class="empty-message">
+  <p *ngIf="searchQuery && selectedType !== 'all'">
+    ¡Opsss, no se encontraron Pokémon de tipo {{ selectedType }} que coincidan con "{{ searchQuery }}"!
+  </p>
+  <p *ngIf="searchQuery && selectedType === 'all'">
+    ¡Opsss, no se encontraron Pokémon que coincidan con "{{ searchQuery }}"!
+  </p>
+  
+  <p *ngIf="!searchQuery && selectedType !== 'all'" class="empty-message">
+    ¡Opsss, no se encontraron Pokémon de tipo {{ selectedType }}!
+  </p>
+  
+  
+</div>
+
+
 <div *ngIf="filteredPokemonList.length === 0 && selectedType !== 'all'" class="pokemon-container1">
   <img
     src="assets/pokemon-touch.png"

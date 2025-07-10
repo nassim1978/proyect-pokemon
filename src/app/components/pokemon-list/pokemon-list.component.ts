@@ -7,13 +7,16 @@ import { PokemonService } from '../../services/pokemon.service';
   styleUrls: ['./pokemon-list.component.scss'],
 })
 export class PokemonListComponent implements OnInit {
+  searchQuery: string = ''; // Texto ingresado en el campo de búsqueda
+  selectedType: string = 'all'; // Tipo seleccionado, por defecto "all"
+
   pokemonList: any[] = [];
   filteredPokemonList: any[] = [];
   paginatedPokemon: any[] = [];
-  searchQuery: string = '';
+
   pageSize: number = 8; // Cantidad de Pokémon por página
   currentPage: number = 0; // Página actual
-  selectedType: string = 'all'; // Tipo seleccionado
+ 
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -38,27 +41,51 @@ export class PokemonListComponent implements OnInit {
   }
 
   // Filtrar por tipo de Pokémon
-  filterByType(type: string): void {
-    this.selectedType = type;
-    if (type === 'all') {
-      this.filteredPokemonList = [...this.pokemonList];
-    } else {
-      this.filteredPokemonList = this.pokemonList.filter((pokemon) =>
-        pokemon.types.includes(type)
-      );
-    }
-    this.currentPage = 0; // Reiniciar a la primera página
-    this.updatePaginatedPokemon();
+filterByType(type: string): void {
+  this.selectedType = type; // Actualizar el tipo seleccionado
+  this.searchQuery = ''; // Vaciar el campo de búsqueda
+
+  if (this.selectedType === 'all') {
+    // Mostrar todos los Pokémon si el tipo es "all"
+    this.filteredPokemonList = [...this.pokemonList];
+  } else {
+    // Filtrar por tipo
+    this.filteredPokemonList = this.pokemonList.filter((pokemon) =>
+      pokemon.types.includes(this.selectedType)
+    );
   }
 
-  // Filtrar por búsqueda
-  onSearch(): void {
+  this.currentPage = 0; // Reiniciar a la primera página
+  this.updatePaginatedPokemon(); // Actualizar la lista paginada
+}
+
+
+ onSearch(event: Event): void {
+  const inputElement = event.target as HTMLInputElement; // Aseguramos que event.target es un HTMLInputElement
+  const searchQuery = inputElement.value; // Obtenemos el valor del input
+
+  this.searchQuery = searchQuery;
+
+  if (this.selectedType === 'all') {
+    // Búsqueda general
     this.filteredPokemonList = this.pokemonList.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
-    this.currentPage = 0; // Reiniciar a la primera página
-    this.updatePaginatedPokemon();
+  } else {
+    // Búsqueda por tipo
+    this.filteredPokemonList = this.pokemonList.filter(
+      (pokemon) =>
+        pokemon.types.includes(this.selectedType) &&
+        pokemon.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
   }
+
+  this.currentPage = 0; // Reiniciar a la primera página
+  this.updatePaginatedPokemon();
+}
+
+
+
 
   // Eliminar temporalmente un Pokémon
   onDelete(pokemon: any): void {
