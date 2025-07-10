@@ -69,14 +69,14 @@ filterByType(type: string): void {
   if (this.selectedType === 'all') {
     // Búsqueda general
     this.filteredPokemonList = this.pokemonList.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      pokemon.name.toLowerCase().startsWith(this.searchQuery.toLowerCase())
     );
   } else {
     // Búsqueda por tipo
     this.filteredPokemonList = this.pokemonList.filter(
       (pokemon) =>
         pokemon.types.includes(this.selectedType) &&
-        pokemon.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+        pokemon.name.toLowerCase().startsWith(this.searchQuery.toLowerCase())
     );
   }
 
