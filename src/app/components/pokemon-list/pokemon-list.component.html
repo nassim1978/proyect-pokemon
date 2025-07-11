@@ -163,6 +163,7 @@
 
 <!-- Lista de Pokémon -->
 <div class="pokemon-grid">
+
   <div *ngFor="let pokemon of paginatedPokemon" class="pokemon-card">
     <img [src]="pokemon.image" [alt]="pokemon.name" />
     <h3>{{ pokemon.name }}</h3>
@@ -182,7 +183,7 @@
 -->
 
 
-
+ 
 <div *ngIf="filteredPokemonList.length === 0" class="empty-message">
   <p *ngIf="searchQuery && selectedType !== 'all'">
     ¡Opsss, no se encontraron Pokémon de tipo {{ selectedType }} que coincidan con "{{ searchQuery }}"!
@@ -208,9 +209,13 @@
 </div>
 
 
-
-
-<!-- Paginador de Angular Material -->
+ 
+<div>
+<!-- Spinner -->
+  <div *ngIf="!isLoading">
+    <mat-spinner class="spinner-container"></mat-spinner>
+  </div>
+  <div>
 <mat-paginator
   [length]="filteredPokemonList.length"
   [pageSize]="pageSize"
@@ -218,3 +223,8 @@
   (page)="onPageChange($event)"
 >
 </mat-paginator>
+  </div>
+  <!-- Paginador de Angular Material -->
+
+</div>
+

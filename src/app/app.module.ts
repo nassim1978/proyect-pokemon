@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppComponent } from './app.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { getSpanishPaginatorIntl } from './custom-paginator-intl'; // Importar la configuración personalizada
@@ -19,6 +19,7 @@ import { getSpanishPaginatorIntl } from './custom-paginator-intl'; // Importar l
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() }, // Configurar el proveedor

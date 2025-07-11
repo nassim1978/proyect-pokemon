@@ -40,3 +40,10 @@ Clona este repositorio en tu máquina local utilizando Git:
 ```bash
 git clone git@github.com:nassim1978/proyect-pokemon.git
 ```
+
+### **2.opcional  generar data para ambiente local** 
+un terminal nuevo ejecuta : node genera-data-pokemon-json.js
+
+### **3. levantar el proyecto en ambiente local** 
+terminal 1: ng serve 
+terminal 2: nodemon server.js
